@@ -9,27 +9,5 @@
   width: 1170px;
   margin: 0 auto;
 }
-.header {
-  grid-area: header;
-  background: bisque;
-}
-.header_logo {
-  width: 12%;
-}
-.nav {
-  grid-area: nav;
-  background: aliceblue;
-}
-.nav ul li {
-  list-style: none;
-}
 
-.content {
-  grid-area: content;
-  background: darkseagreen;
-}
-.content .main-img{
-  width: 100%;
-  height: 200px;
-  max-width: 100%;
-}
+
