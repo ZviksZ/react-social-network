@@ -1,0 +1,10 @@
+.active{
+    color: gold
+}
+.dialog a.activeLink{
+    color: gold
+}
+.dialog a{
+    color: #333;
+    text-decoration: none;
+}
