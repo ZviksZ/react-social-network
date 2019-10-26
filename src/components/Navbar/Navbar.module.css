@@ -1,7 +1,7 @@
 .nav {
     grid-area: nav;
     background: aliceblue;
-    padding: 20px;
+    padding: 10px;
 }
 .nav .nav_list .item {
     list-style: none;
@@ -9,6 +9,8 @@
 .nav .nav_list .item a{
     color: #333;
     text-decoration: none;
+    font-size: 20px;
+    text-transform: uppercase;
 }
 .nav .nav_list .item a:hover{
     text-decoration: underline;

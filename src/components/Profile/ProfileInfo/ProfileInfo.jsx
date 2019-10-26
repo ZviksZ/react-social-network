@@ -9,7 +9,7 @@ const ProfileInfo = () => {
                  alt=""/>
 
             <div className={s.content_info}>
-                <img src="https://mdn.mozillademos.org/files/16631/favicon57.de33179910ae.1.1.png" alt=""/>
+                <img class={s.avaImg} src="https://mdn.mozillademos.org/files/16631/favicon57.de33179910ae.1.1.png" alt=""/>
                 <div className="content_user-data">
 
                 </div>

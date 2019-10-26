@@ -1,0 +1,18 @@
+.item {
+    width: 22%;
+    padding: 0 3px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.item img {
+    width: 80%;
+    border-radius: 50%;
+    height: auto;
+}
+.item a.activeLink {
+    color: gold;
+}
+.item a{
+    color: #333;
+    text-decoration: none;
+}
