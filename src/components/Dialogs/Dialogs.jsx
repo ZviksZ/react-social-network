@@ -13,7 +13,6 @@ const Dialogs = (props) => {
     let addMessage = () => {
         let text = newMessageElement.current.value;
 
-        alert(text)
     }
     return (
         <div className={s.dialogs}>
