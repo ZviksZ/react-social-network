@@ -1,7 +1,7 @@
-import React from 'react';
-import s from './Dialogs.module.css';
-import DialogItem from "./DialogItem/DialogItem";
-import Message from "./Message/Message";
+import React                               from 'react';
+import s                                   from './Dialogs.module.css';
+import DialogItem                          from "./DialogItem/DialogItem";
+import Message                             from "./Message/Message";
 
 const Dialogs = (props) => {
 
@@ -10,9 +10,10 @@ const Dialogs = (props) => {
 
     let newMessageElement = React.createRef();
 
-    let addMessage = () => {
+    let onMessageChange = () => {
         let text = newMessageElement.current.value;
-
+        props.updateNewMessageText(text);
+        console.log(props.state.newMessageText)
     }
     return (
         <div className={s.dialogs}>
@@ -22,10 +23,10 @@ const Dialogs = (props) => {
             <div className={s.messages}>
                 { messagesElements }
                 <div>
-                    <textarea ref={ newMessageElement }></textarea>
+                    <textarea onChange={onMessageChange} ref={ newMessageElement } value={props.state.newMessageText}></textarea>
                 </div>
                 <div>
-                    <button onClick={ addMessage }>Add</button>
+                    <button onClick={ props.addMessage }>Add</button>
                 </div>
             </div>
 
