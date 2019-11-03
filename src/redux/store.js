@@ -1,8 +1,6 @@
-const SEND_MESSAGE = 'SEND-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-
+import dialogsReducer from "./dialogs-reducer";
+import profileReducer from "./profile-reducer";
+import sidebarReducer  from "./sidebar-reducer";
 
 let store = {
     _subscriber() {
@@ -38,7 +36,7 @@ let store = {
             ],
             newMessageText: ""
         },
-        navbarPage: {
+        sidebarPage: {
             friends: [
                 {id: 1, name: 'John'},
                 {id: 2, name: 'Eddy'},
@@ -56,49 +54,14 @@ let store = {
     getState() {
       return this._state;
     },
-    dispatch(action) { // action - объект
-        if( action.type === ADD_POST) {
-            let newPost = {
-                id: this._state.profilePage.posts.length + 1,
-                message: this._state.profilePage.newPostText,
-                likeCount: 0
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = "";
-            this._subscriber(this.getState());
+    dispatch(action) {
 
-        } else if ( action.type === UPDATE_NEW_POST_TEXT ) {
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sidebarPage = sidebarReducer(this._state.sidebarPage, action);
 
-            this._state.profilePage.newPostText = action.text;
-            this._subscriber(this.getState());
-
-        } else if ( action.type === SEND_MESSAGE ) {
-
-            let newPost = {
-                id: this._state.dialogsPage.messages.length + 1,
-                message: this._state.dialogsPage.newMessageText,
-            };
-            this._state.dialogsPage.messages.push(newPost);
-            this._state.dialogsPage.newMessageText = "";
-
-            this._subscriber(this.getState());
-
-        } else if ( action.type === UPDATE_NEW_MESSAGE_TEXT ) {
-
-            this._state.dialogsPage.newMessageText = action.text;
-            this._subscriber(this.getState());
-
-        }
+        this._subscriber(this.getState());
     }
 }
-
-export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE })
-
-export const updateNewMessageTextActionCreator = (text) => ({ type: UPDATE_NEW_MESSAGE_TEXT, text})
-
-export const addPostActionCreator = () =>  ({ type: ADD_POST })
-
-export const updateNewPostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, text })
-
 
 export default store;
