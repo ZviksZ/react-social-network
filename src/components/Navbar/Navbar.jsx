@@ -1,12 +1,9 @@
 import React     from 'react';
 import {NavLink} from 'react-router-dom';
-import Friends   from "./Friends/Friends";
+/*import Friends   from "./Friends/Friends";*/
 import s         from './Navbar.module.css';
 
 const Navbar = (props) => {
-
-    let state = props.store.getState().sidebarPage;
-
     return (
         <nav className={s.nav}>
             <ul className={s.nav_list}>
@@ -27,9 +24,10 @@ const Navbar = (props) => {
                 </li>
             </ul>
 
-            <Friends friends={state.friends}/>
+            {/*<Friends friends={state.friends}/>*/}
         </nav>
-    );
+    )
 }
+
 
 export default Navbar;
