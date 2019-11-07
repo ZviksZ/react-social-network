@@ -20,7 +20,6 @@ let mapDispatchToProps = (dispatch) => {
         setUsers: (users) => {
             dispatch(setUsersAC(users));
         }
-
     }
 }
 

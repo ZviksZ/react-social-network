@@ -60,11 +60,12 @@ const Users = (props) => {
                     <div>
                         <img src={u.photoUrl} className={s.avatar} alt=""/>
                         {
-                            u.followed
-                                ? <button onClick={() => {
+                            u.followed ?
+                                <button onClick={() => {
                                     props.unfollow(u.id)
                                 }}>Unfollow</button>
-                                : <button onClick={() => {
+                                :
+                                <button onClick={() => {
                                     props.follow(u.id)
                                 }}>Follow</button>
                         }

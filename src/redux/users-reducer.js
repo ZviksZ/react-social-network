@@ -19,7 +19,6 @@ const usersReducer = (state = initialState, action) => {
                     return u;
                 })
             }
-
         case UNFOLLOW:
             return {
                 ...state,
