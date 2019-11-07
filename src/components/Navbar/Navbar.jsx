@@ -1,6 +1,6 @@
 import React     from 'react';
 import {NavLink} from 'react-router-dom';
-/*import Friends   from "./Friends/Friends";*/
+import Friends   from "./Friends/Friends";
 import s         from './Navbar.module.css';
 
 const Navbar = (props) => {
@@ -24,7 +24,7 @@ const Navbar = (props) => {
                 </li>
             </ul>
 
-            {/*<Friends friends={state.friends}/>*/}
+            <Friends friends={props.friends}/>
         </nav>
     )
 }
