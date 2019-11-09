@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
-import s     from './Users.module.css';
-import * as axios from 'axios'
-import userPhoto from '../../assets/images/default_ava.jpg'
+import s                  from './Users.module.css';
+import * as axios         from 'axios'
+import userPhoto          from '../../assets/images/default_ava.jpg'
 
 
-class Users extends React.Component {
+class Users extends Component {
 
     componentDidMount() {
         axios.get('https://social-network.samuraijs.com/api/1.0/users')
