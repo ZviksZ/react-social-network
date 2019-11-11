@@ -1,12 +1,28 @@
 .main_img{
     width: 100%;
-    height: 200px;
+    height: 50px;
     max-width: 100%;
 }
 .content_info {
     padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.fullName {
+    text-transform: uppercase;
+    color: gold;
+    margin: 0 0 10px;
+}
+.leftSide {
+    margin-right: 20px;
+}
+.rightSide {
+    width: 100%;
 }
 .avaImg {
     width: 150px;
     height: auto;
+}
+.socials li {
+    font-size: 20px;
 }
