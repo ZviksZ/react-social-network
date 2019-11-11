@@ -1,7 +1,6 @@
 import React                                                         from 'react';
 import {connect}                                                     from "react-redux";
 import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/dialogs-reducer"
-import MyPosts                                                       from "../Profile/MyPosts/MyPostsContainer.jsx";
 import Dialogs                                                       from "./Dialogs.jsx";
 
 
