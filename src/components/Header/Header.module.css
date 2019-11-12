@@ -1,7 +1,26 @@
 .header {
     grid-area: header;
     background: bisque;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 .header_logo {
     width: 12%;
+}
+.loginBlock {
+    margin-left: auto;
+    margin-right: 20px;
+}
+.loginBlock a {
+    text-transform: uppercase;
+    color: #000;
+    text-decoration: none;
+}
+.loginBlock a:hover {
+    text-decoration: underline;
+}
+.userData {
+    margin-right: 20px;
+    text-transform: uppercase;
 }
