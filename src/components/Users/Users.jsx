@@ -12,16 +12,13 @@ let Users = (props) => {
         pages.push(i);
     }
     
-    
-    
-
     return (
         <div>
             <div className={s.pagination}>
 
                 {
                     pages.map(p => {
-                        if (p > 20) {
+                        if (p > 30) {
                             return false;
                         }
                         return <span className={props.currentPage === p && s.selectedPage}
