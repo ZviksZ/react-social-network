@@ -4,7 +4,7 @@ import s         from './FriendsItem.module.css';
 
 const FriendsItem = (props) => {
 
-    let path = "/dialogs/" + props.id;
+    let path = "/profile/" + props.id;
 
     return (
         <div className={s.item} id={props.id}>

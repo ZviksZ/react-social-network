@@ -1,12 +1,12 @@
-import React     from 'react';
-import {connect} from "react-redux";
-import MyPosts   from "../Profile/MyPosts/MyPosts.jsx";
-import Navbar    from "./Navbar.jsx";
+import React        from 'react';
+import {connect}    from "react-redux";
+import Navbar       from "./Navbar.jsx";
 
 
 let mapStateToProps = (state) => {
     return {
-        friends: state.sidebarPage.friends
+        friends: state.sidebarPage.friends,
+        users: state.usersPage.users
     }
 }
 const NavbarContainer = connect(mapStateToProps)(Navbar)

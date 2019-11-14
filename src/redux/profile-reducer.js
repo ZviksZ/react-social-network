@@ -26,7 +26,7 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 newPostText: '',
-                posts: [ ...state.posts,  {
+                posts: [...state.posts, {
                     id: state.posts.length + 1,
                     message: text,
                     likeCount: 0
@@ -58,12 +58,10 @@ export const updateNewPostText = (text) => ({type: UPDATE_NEW_POST_TEXT, text})
 
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 
-export const setUserProfileThunk = (userId) => {
-    return (dispatch) => {
-        profileAPI.getUserProfile(userId).then(response => {
-            dispatch(setUserProfile(response.data));
-        })
-    }
+export const setUserProfileThunk = (userId) => (dispatch) => {
+    profileAPI.getUserProfile(userId).then(response => {
+        dispatch(setUserProfile(response.data));
+    })
 }
 
 

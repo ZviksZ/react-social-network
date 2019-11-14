@@ -26,8 +26,10 @@ const Navbar = (props) => {
                     <NavLink to="/settings" activeClassName={s.activeLink}>Settings</NavLink>
                 </li>
             </ul>
-
-            <Friends friends={props.friends}/>
+            {
+                props.users.length ? <Friends friends={props.users}/> : null
+            }
+            
         </nav>
     )
 }

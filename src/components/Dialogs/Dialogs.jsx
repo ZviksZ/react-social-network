@@ -14,6 +14,7 @@ const Dialogs = (props) => {
         let text = e.currentTarget.value;
         props.updateNewMessageText(text);
     }
+        
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
