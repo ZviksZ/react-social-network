@@ -1,8 +1,8 @@
-import {returnStatement} from "@babel/types";
-import React             from 'react';
-import Preloader         from "../../common/Preloader/Preloader.jsx";
-import s                 from './ProfileInfo.module.css';
-import userPhoto         from '../../../assets/images/default_ava.jpg'
+import React         from 'react';
+import Preloader     from "../../common/Preloader/Preloader.jsx";
+import s             from './ProfileInfo.module.css';
+import userPhoto     from '../../../assets/images/default_ava.jpg'
+import ProfileStatus from "./ProfileStatus.jsx";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -29,6 +29,10 @@ const ProfileInfo = (props) => {
                     <div className={s.content_user_data}>
 
                         <h2 className={s.fullName}>{props.profile.fullName}</h2>
+                        
+                        <ProfileStatus updateStatus={props.updateStatus}
+                                       status={props.status}/>
+                        
                         <div className={s.description}>
                             {props.profile.aboutMe}
                         </div>
