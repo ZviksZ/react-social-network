@@ -1,7 +1,7 @@
 import {authAPI}                       from "../api/api.js";
 
 const SET_USER_DATA = 'SET_USER_DATA';
-const LOGIN = 'LOGIN';
+const LOGIN_LOGOUT = 'LOGIN_LOGOUT';
 
 let initialState = {
     id: null,
@@ -20,7 +20,7 @@ const authReducer = (state = initialState, action) => {
                 ...action.data,
                 isAuth: true
             }
-        case LOGIN:
+        case LOGIN_LOGOUT:
             return {
                 ...state,
                 isAuth: action.isAuthSuccess
@@ -32,7 +32,7 @@ const authReducer = (state = initialState, action) => {
 }
 
 export const setAuthUserData = (id, email, login) => ({type: SET_USER_DATA, data: {id, email, login}})
-export const loginAC = (isAuthSuccess) => ({type: LOGIN, isAuthSuccess})
+export const loginAC = (isAuthSuccess) => ({type: LOGIN_LOGOUT, isAuthSuccess})
 
 
 export const setAuthUserDataThunk = () => (dispatch) => {
