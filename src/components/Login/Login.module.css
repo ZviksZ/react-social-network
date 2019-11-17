@@ -1,0 +1,15 @@
+.loginForm {
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+}
+.loginForm input{
+    width: 100%;
+    margin-bottom: 15px;
+}
+.loginForm input[type='checkbox']{
+    width: auto;
+    margin-bottom: 15px;
+}

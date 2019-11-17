@@ -5,7 +5,12 @@ import Header                 from "./Header.jsx";
 
 class HeaderContainer extends Component {
     componentDidMount() {
-        this.props.setAuthUserDataThunk()
+        this.props.setAuthUserDataThunk()        
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.isAuth !== this.props.isAuth) {
+            this.props.setAuthUserDataThunk() 
+        }         
     }
 
     render() {
