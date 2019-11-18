@@ -24,3 +24,12 @@
     margin-right: 20px;
     text-transform: uppercase;
 }
+.rightWrap {
+    display: flex;
+}
+.rightWrap button {
+    width: 120px;
+}
+.loginName {
+    margin-right: 15px;
+}

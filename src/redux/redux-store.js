@@ -1,4 +1,5 @@
 import {applyMiddleware, combineReducers, createStore} from 'redux';
+import appReducer                                      from "./app-reducer.js";
 import authReducer                                     from "./auth-reducer";
 import dialogsReducer                                  from "./dialogs-reducer";
 import profileReducer                                  from "./profile-reducer";
@@ -13,7 +14,8 @@ let reducers = combineReducers({
     sidebarPage: sidebarReducer,
     usersPage: usersReducer,
     auth: authReducer,
-    form: formReducer
+    form: formReducer,
+    app: appReducer
 });
 
 
