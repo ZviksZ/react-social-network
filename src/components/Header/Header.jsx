@@ -1,6 +1,7 @@
-import React from 'react';
-import {NavLink} from 'react-router-dom';
-import s from './Header.module.css';
+import React      from 'react';
+import {NavLink}  from 'react-router-dom';
+import {logoutMe} from "../../redux/auth-reducer.js";
+import s          from './Header.module.css';
 
 const Header = (props) => {
     return (
@@ -16,7 +17,11 @@ const Header = (props) => {
             <div className={s.loginBlock}>
                 {
                     props.isAuth ? 
-                        <NavLink to="/">{props.login}</NavLink>
+                        <div>
+                            <NavLink to="/">{props.login}</NavLink>
+                            <button onClick={props.logoutMe}>Log out</button>
+                        </div>
+                        
                         : 
                         <NavLink to="/login">Login</NavLink>
                 }

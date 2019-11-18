@@ -24,15 +24,15 @@ export const authAPI = {
     getMyProfile() {
         return instance.get(`auth/me`).then(response => response.data);
     },
-    login(login, password, rememberMe) {
+    login(email, password, rememberMe = false) {
         return instance.post(`auth/login`, {
-            email: login,
-            password: password,
-            rememberMe: rememberMe
-        })
+            email,
+            password,
+            rememberMe
+        });
     },
     logout() {
-        return instance.post(`auth/logout`)
+        return instance.delete(`auth/login`);
     }
 }
 export const profileAPI = {

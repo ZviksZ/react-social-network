@@ -1,29 +1,26 @@
-import React              from 'react'
-import {connect}          from "react-redux";
-import {loginMe, logoutMe}          from "../../redux/auth-reducer.js";
-import s                  from './Login.module.css'
-import {LoginReduxForm}   from "./LoginForm/LoginForm.jsx";
-
+import React            from 'react'
+import {connect}        from "react-redux";
+import {Redirect}       from "react-router-dom";
+import {loginMe}        from "../../redux/auth-reducer.js";
+import s                from './Login.module.css'
+import {LoginReduxForm} from "./LoginForm/LoginForm.jsx";
 
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        const {login, password, rememberMe} = formData;
-        
-        props.loginMe(login, password, rememberMe)
-    }   
-    const onLogout = () => {
-        props.logoutMe();
+        const {email, password, rememberMe} = formData;
+
+        props.loginMe(email, password, rememberMe)
     }
+
+    if (props.isAuth) {
+        return <Redirect to={'/profile'}/>
+    }
+
     return (
         <div>
             <h1>Login</h1>
-            {props.isAuth ?
-                <button onClick={onLogout}>Log out</button>
-                :
-                <LoginReduxForm onSubmit={onSubmit} />
-            }
-            
+            <LoginReduxForm onSubmit={onSubmit}/>
         </div>
     )
 }
@@ -34,6 +31,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-
-
-export default connect(mapStateToProps, {logoutMe, loginMe})(Login)
+export default connect(mapStateToProps, {loginMe})(Login)

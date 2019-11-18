@@ -5,6 +5,9 @@
     margin: 0 auto;
     text-align: center;
 }
+.loginForm > div {
+    width: 100%;    
+}
 .loginForm input{
     width: 100%;
     margin-bottom: 15px;
