@@ -11,10 +11,9 @@ class ProfileContainer extends Component {
         let {userId} = this.props.match.params;
 
         if (!userId) {            
-            userId = this.props.authorizedUserId;
-            
+            userId = this.props.authorizedUserId;            
             if (!userId) {
-                this.props.history.push('/login')
+                this.props.history.push("/login")
             } 
             
         }

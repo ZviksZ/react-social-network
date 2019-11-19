@@ -1,8 +1,9 @@
-import React         from 'react';
-import Preloader     from "../../common/Preloader/Preloader.jsx";
-import s             from './ProfileInfo.module.css';
-import userPhoto     from '../../../assets/images/default_ava.jpg'
-import ProfileStatus from "./ProfileStatus.jsx";
+import React                  from 'react';
+import Preloader              from "../../common/Preloader/Preloader.jsx";
+import s                      from './ProfileInfo.module.css';
+import userPhoto              from '../../../assets/images/default_ava.jpg'
+import ProfileStatus          from "./ProfileStatus.jsx";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks.jsx";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -30,7 +31,7 @@ const ProfileInfo = (props) => {
 
                         <h2 className={s.fullName}>{props.profile.fullName}</h2>
                         
-                        <ProfileStatus updateStatus={props.updateStatus}
+                        <ProfileStatusWithHooks updateStatus={props.updateStatus}
                                        status={props.status}/>
                         
                         <div className={s.description}>

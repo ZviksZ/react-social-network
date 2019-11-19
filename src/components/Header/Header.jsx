@@ -1,6 +1,5 @@
 import React      from 'react';
 import {NavLink}  from 'react-router-dom';
-import {logoutMe} from "../../redux/auth-reducer.js";
 import s          from './Header.module.css';
 
 const Header = (props) => {
