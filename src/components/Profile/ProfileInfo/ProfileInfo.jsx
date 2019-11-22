@@ -5,12 +5,12 @@ import userPhoto              from '../../../assets/images/default_ava.jpg'
 import ProfileStatus          from "./ProfileStatus.jsx";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks.jsx";
 
-const ProfileInfo = (props) => {
-    if (!props.profile) {
+const ProfileInfo = ({profile, status, updateStatus}) => {
+    if (!profile) {
         return <Preloader/>
     }
 
-    let contacts = props.profile.contacts;
+    let contacts = profile.contacts;
 
     return (
 
@@ -22,20 +22,20 @@ const ProfileInfo = (props) => {
             <div className={s.content_info}>
 
                 <div className={s.leftSide}>
-                    <img className={s.avaImg} src={props.profile.photos.large ? props.profile.photos.large : userPhoto} alt=""/>
+                    <img className={s.avaImg} src={profile.photos.large ? profile.photos.large : userPhoto} alt=""/>
                 </div>
 
                 <div className={s.rightSide}>
 
                     <div className={s.content_user_data}>
 
-                        <h2 className={s.fullName}>{props.profile.fullName}</h2>
+                        <h2 className={s.fullName}>{profile.fullName}</h2>
                         
-                        <ProfileStatusWithHooks updateStatus={props.updateStatus}
-                                       status={props.status}/>
+                        <ProfileStatusWithHooks updateStatus={updateStatus}
+                                       status={status}/>
                         
                         <div className={s.description}>
-                            {props.profile.aboutMe}
+                            {profile.aboutMe}
                         </div>
                         <ul className={s.socials}>
                             {

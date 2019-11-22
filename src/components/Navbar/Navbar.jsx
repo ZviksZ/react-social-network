@@ -25,6 +25,9 @@ const Navbar = (props) => {
                 <li className={s.item}>
                     <NavLink to="/settings" activeClassName={s.activeLink}>Settings</NavLink>
                 </li>
+                <li className={s.item}>
+                    <NavLink to="/test" activeClassName={s.activeLink}>TestPage</NavLink>
+                </li>
             </ul>
             {
                 props.users.length ? <Friends friends={props.users}/> : null

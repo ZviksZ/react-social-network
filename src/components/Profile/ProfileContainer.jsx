@@ -1,9 +1,9 @@
-import React, {Component}                             from 'react';
-import {connect}                                      from "react-redux";
-import {withRouter}                                   from "react-router-dom";
-import {compose}                                      from "redux";
+import React, {Component}                                         from 'react';
+import {connect}                                                  from "react-redux";
+import {withRouter}                                               from "react-router-dom";
+import {compose}                                                  from "redux";
 import {getStatus, setUserProfileThunk, updateStatus} from "../../redux/profile-reducer.js";
-import Profile                                        from "./Profile.jsx";
+import Profile                                                    from "./Profile.jsx";
 
 class ProfileContainer extends Component {
 
@@ -29,7 +29,7 @@ class ProfileContainer extends Component {
             <Profile {...this.props} 
                      profile={this.props.profile}
                      updateStatus={this.props.updateStatus}
-                     status={this.props.status}
+                     status={this.props.status}                     
             />
         )
     }

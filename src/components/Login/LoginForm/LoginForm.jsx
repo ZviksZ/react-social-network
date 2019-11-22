@@ -1,41 +1,24 @@
-import React              from 'react'
-import {Field, reduxForm} from "redux-form";
-import {required}         from "../../../helpers/validators/validators.js";
-import {Input}            from "../../common/FormsControls/FormControls.js";
-import s                  from "../Login.module.css";
-import styles             from './../../common/FormsControls/FormControls.module.css';
+import React                from 'react'
+import {reduxForm}   from "redux-form";
+import {required}           from "../../../helpers/validators/validators.js";
+import {createField, Input} from "../../common/FormsControls/FormControls.js";
+import s                    from "../Login.module.css";
+import styles               from './../../common/FormsControls/FormControls.module.css';
 
-const LoginForm = (props) => {
-    const {handleSubmit} = props;
+const LoginForm = ({handleSubmit, error}) => {
     return (
         <form className={s.loginForm} onSubmit={handleSubmit}>
-            <div>
-                <Field name={'email'}
-                       placeholder={"Login"}
-                       component={Input}
-                       validate={[required]}/>
-            </div>
-            <div>
-                <Field name={'password'}
-                       placeholder={"Password"}
-                       type={'password'}
-                       component={Input}
-                       validate={[required]}/>
-            </div>
-            <div>
-                <Field name={'rememberMe'}
-                       component={Input}
-                       type={'checkbox'}/>remember me
-            </div>
-            {
-                props.error ?
-                    <div className={styles.formSummaryError}>
-                        {props.error}
-                    </div>
-                    : 
-                    null
-            }
+
+            {createField("Login", 'email', [required], Input)}
+
+            {createField("Password", 'password', [required], Input, {type: 'password'})}
+
+            {createField(null, 'rememberMe', null, Input, {type: 'checkbox'}, 'remember me')}
+
+            {error ? <div className={styles.formSummaryError}> {error} </div> : null}
+            
             <button>Log in</button>
+            
         </form>
     )
 }

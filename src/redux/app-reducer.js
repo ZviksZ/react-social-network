@@ -1,14 +1,13 @@
 import {setAuthUserDataThunk} from "./auth-reducer.js";
 
-const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
-const INITIALIZED_LOGOUT = 'INITIALIZED_LOGOUT';
+const INITIALIZED_SUCCESS = 'my-social-network/app/INITIALIZED_SUCCESS';
+const INITIALIZED_LOGOUT = 'my-social-network/app/INITIALIZED_LOGOUT';
 
 let initialState = {
     initialized: false
 };
 
 const appReducer = (state = initialState, action) => {
-
     switch (action.type) {
         case INITIALIZED_SUCCESS:
             return {
