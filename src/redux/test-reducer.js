@@ -16,7 +16,7 @@ const testReducer = (state = initialState, action) => {
             };
         default:
             return state;
-    }
+    } 
 }
 
 export const updatePhoto = (photo) => ({type: DOWNLOAD_PHOTO, photo});

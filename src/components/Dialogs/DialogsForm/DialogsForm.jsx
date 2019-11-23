@@ -14,9 +14,11 @@ const AddMessageForm = (props) => {
                        name={'newMessageText'} 
                        placeholder={'Enter your message'}
                        validate={[required, maxLength50]}/>
+                
             </div>
             <div>
                 <button>Add</button>
+                <button onClick={props.reset}>Clear Values</button>
             </div>
         </form>
     )
