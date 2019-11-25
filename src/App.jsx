@@ -10,7 +10,6 @@ import NavbarContainer                    from "./components/Navbar/NavbarContai
 import News                               from "./components/News/News";
 import Settings                           from "./components/Settings/Settings";
 import Music                              from "./components/Music/Music";
-import Test                               from "./components/Test/Test.jsx";
 import {withSuspense}                     from "./hoc/withSuspense.js";
 import {initializeApp}                    from "./redux/app-reducer.js";
 import store                              from "./redux/redux-store.js";
@@ -45,7 +44,6 @@ class App extends Component {
                     <Route path="/music" render={() => <Music/>}/>
                     <Route path="/settings" render={() => <Settings/>}/>
                     <Route path="/login" render={() => <LoginPage/>}/>
-                    <Route path="/test" render={() => <Test/>}/>
 
                 </div>
             </div>
@@ -66,7 +64,7 @@ const AppContainer = compose(
 
 const SamuraiJSAPP = (props) => {
     return (
-        <HashRouter >
+        <HashRouter>  
             <Provider store={store}>
                 <AppContainer/>
             </Provider>
@@ -74,6 +72,6 @@ const SamuraiJSAPP = (props) => {
     )
 
 }
-
+//<BrowserRouter basename={process.env.PUBLIC_URL}> для обычного деплоя, не для GitHub 
 export default SamuraiJSAPP;
 
