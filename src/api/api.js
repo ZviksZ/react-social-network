@@ -24,15 +24,22 @@ export const authAPI = {
     getMyProfile() {
         return instance.get(`auth/me`).then(response => response.data);
     },
-    login(email, password, rememberMe = false) {
+    login(email, password, rememberMe = false, captcha = null) {
         return instance.post(`auth/login`, {
             email,
             password,
-            rememberMe
+            rememberMe,
+            captcha
         });
     },
     logout() {
         return instance.delete(`auth/login`);
+    }
+}
+
+export const securityAPI = {
+    getCaptchaUrl() {
+        return instance.get(`security/get-captcha-url`);
     }
 }
 export const profileAPI = {
@@ -60,18 +67,5 @@ export const profileAPI = {
     }
 }
 
-
-export const testAPI = {
-    getCaptcha() {
-        return instance.get(`security/get-captcha-url`);
-    },
-    uploadProfilePhoto(photo) {
-        const formData = new FormData();
-        formData.append("image", photo);
-        return instance.put(`profile/photo`, formData, {
-            headers: {'Content-Type': 'multipart/form-data'}
-        })
-    },
-}
 
  

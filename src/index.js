@@ -1,11 +1,11 @@
-import SamuraiJSAPP       from "./App.jsx";
+import SamuraiJSApp       from "./App.jsx";
 import * as serviceWorker from './serviceWorker';
 import React              from 'react';
 import ReactDOM           from 'react-dom';
 import './index.css';
 
 
-ReactDOM.render(<SamuraiJSAPP/>, document.getElementById('root'));
+ReactDOM.render(<SamuraiJSApp/>, document.getElementById('root'));
 
 
 // If you want your app to work offline and load faster, you can change

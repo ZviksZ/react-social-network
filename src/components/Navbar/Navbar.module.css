@@ -18,3 +18,10 @@
 .nav .nav_list .item a.activeLink{
     color: gold;
 }
+
+.disabledLink {
+    pointer-events: none;    
+}
+.disabledLink a{
+    color: #bbbbbb !important;   
+}

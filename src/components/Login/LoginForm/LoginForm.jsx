@@ -5,7 +5,7 @@ import {createField, Input} from "../../common/FormsControls/FormControls.js";
 import s                    from "../Login.module.css";
 import styles               from './../../common/FormsControls/FormControls.module.css';
 
-const LoginForm = ({handleSubmit, error}) => {
+const LoginForm = ({captchaUrl, handleSubmit, error}) => {
     return (
         <form className={s.loginForm} onSubmit={handleSubmit}>
 
@@ -15,7 +15,16 @@ const LoginForm = ({handleSubmit, error}) => {
 
             {createField(null, 'rememberMe', null, Input, {type: 'checkbox'}, 'remember me')}
 
+            {captchaUrl &&
+            <div>
+                <img src={captchaUrl} alt=""/>
+                {createField('Symbols from image', 'captcha', [required], Input)}
+            </div>
+            }
+
             {error ? <div className={styles.formSummaryError}> {error} </div> : null}
+            
+            
             
             <button>Log in</button>
             

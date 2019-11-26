@@ -24,15 +24,13 @@ class ProfileContainer extends Component {
         this.refreshProfile();
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    componentDidUpdate(prevProps, prevState) {
         if (this.props.match.params.userId !== prevProps.match.params.userId ) {
             this.refreshProfile();
         }
     }
 
-
     render() {
-
 
         return (
             <Profile {...this.props}

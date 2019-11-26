@@ -1,18 +1,19 @@
-import React, {Component}                 from 'react';
-import {connect, Provider}                from "react-redux";
-import {HashRouter, BrowserRouter, Route, withRouter} from 'react-router-dom';
+import React, {Component}                                               from 'react';
+import {connect, Provider}                                              from "react-redux";
+import {HashRouter, BrowserRouter, Route, withRouter, Switch, Redirect} from 'react-router-dom';
 import './App.css';
-import {compose}                          from "redux";
-import Preloader                          from "./components/common/Preloader/Preloader.jsx";
-import HeaderContainer                    from "./components/Header/HeaderContainer.jsx";
-import LoginPage                          from "./components/Login/Login.jsx";
-import NavbarContainer                    from "./components/Navbar/NavbarContainer.jsx";
-import News                               from "./components/News/News";
-import Settings                           from "./components/Settings/Settings";
-import Music                              from "./components/Music/Music";
-import {withSuspense}                     from "./hoc/withSuspense.js";
-import {initializeApp}                    from "./redux/app-reducer.js";
-import store                              from "./redux/redux-store.js";
+import {compose}                                                        from "redux";
+import ErrorPopup                                                       from "./components/common/ErrorPopup/ErrorPopup.jsx";
+import Preloader                                                        from "./components/common/Preloader/Preloader.jsx";
+import HeaderContainer                                                  from "./components/Header/HeaderContainer.jsx";
+import LoginPage                                                        from "./components/Login/Login.jsx";
+import NavbarContainer                                                  from "./components/Navbar/NavbarContainer.jsx";
+import News                                                             from "./components/News/News";
+import Settings                                                         from "./components/Settings/Settings";
+import Music                                                            from "./components/Music/Music";
+import {withSuspense}                                                   from "./hoc/withSuspense.js";
+import {initializeApp, setGlobalError}                                  from "./redux/app-reducer.js";
+import store                                                            from "./redux/redux-store.js";
 
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.jsx'));
@@ -21,30 +22,47 @@ const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileCo
 
 
 class App extends Component {
+    catchAllUnhandledErrors = (reason, promise) => {
+        this.props.setGlobalError(reason.reason)
+    }
+
     componentDidMount() {
-        this.props.initializeApp()
+        this.props.initializeApp();
+
+        window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('unhandledrejection', this.catchAllUnhandledErrors)
     }
 
     render() {
         if (!this.props.initialized) return <Preloader/>
 
         return (
-            <div className="app-wrapper">
+            <div className="app-wrapper">  
+               { //GlobalError message
+                    this.props.globalError && <ErrorPopup globalError={this.props.globalError}/>
+               }   
                 <HeaderContainer/>
                 <NavbarContainer/>
                 <div className="app-wrapper-content">
+                    <Switch>
+                        <Route exact path="/"
+                               render={() => <Redirect from='/' to='/profile'/>}/>
+                        <Route path="/dialogs"
+                               render={withSuspense(DialogsContainer)}/>
+                        <Route path="/profile/:userId?"
+                               render={withSuspense(ProfileContainer)}/>
+                        <Route path="/users"
+                               render={withSuspense(UsersContainer)}/>
+                        <Route path="/news" render={() => <News/>}/>
+                        <Route path="/music" render={() => <Music/>}/>
+                        <Route path="/settings" render={() => <Settings/>}/>
+                        <Route path="/login" render={() => <LoginPage/>}/>
 
-                    <Route path="/dialogs"
-                           render={withSuspense(DialogsContainer)}/>
-                    <Route path="/profile/:userId?"
-                           render={withSuspense(ProfileContainer)}/>
-                    <Route path="/users"
-                           render={withSuspense(UsersContainer)}/>
-                    <Route path="/news" render={() => <News/>}/>
-                    <Route path="/music" render={() => <Music/>}/>
-                    <Route path="/settings" render={() => <Settings/>}/>
-                    <Route path="/login" render={() => <LoginPage/>}/>
-
+                        <Route render={() => <div>404 not found</div>}/>
+                    </Switch>
                 </div>
             </div>
         )
@@ -53,25 +71,32 @@ class App extends Component {
 
 let mapStateToProps = (state) => {
     return {
-        initialized: state.app.initialized
+        initialized: state.app.initialized,
+        globalError: state.app.globalError
     }
 }
 
 const AppContainer = compose(
-    connect(mapStateToProps, {initializeApp}),
+    connect(mapStateToProps, {initializeApp, setGlobalError}),
     withRouter
 )(App);
 
-const SamuraiJSAPP = (props) => {
+const SamuraiJSApp = (props) => {
     return (
-        <HashRouter>  
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Provider store={store}>
                 <AppContainer/>
             </Provider>
-        </HashRouter>
+        </BrowserRouter>
     )
 
 }
+
+
 //<BrowserRouter basename={process.env.PUBLIC_URL}> для обычного деплоя, не для GitHub 
-export default SamuraiJSAPP;
+
+//<HashRouter> для GitHub
+
+
+export default SamuraiJSApp;
 

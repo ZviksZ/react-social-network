@@ -1,11 +1,12 @@
-import {profileAPI} from "../api/api.js";
-import {stopSubmit} from "redux-form";
+import {profileAPI}     from "../api/api.js";
+import {stopSubmit}     from "redux-form";
+import {setGlobalError} from "./app-reducer.js";
 
 const ADD_POST = 'my-social-network/profile/ADD-POST';
 const DELETE_POST = 'my-social-network/profile/DELETE_POST';
 const SET_USER_PROFILE = 'my-social-network/profile/SET_USER_PROFILE';
 const SET_STATUS = 'my-social-network/profile/SET_STATUS';
-const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
+const SAVE_PHOTO_SUCCESS = 'my-social-network/profile/SAVE_PHOTO_SUCCESS';
 
 
 let initialState = {
@@ -82,11 +83,17 @@ export const getStatus = (userId) => async (dispatch) => {
 
 }
 export const updateStatus = (status) => async (dispatch) => {
-    let response = await profileAPI.updateStatus(status)
-    
-    if (response.data.resultCode === 0) {
-        dispatch(setStatus(status));
+    try {
+        let response = await profileAPI.updateStatus(status)
+
+        if (response.data.resultCode === 0) {
+            dispatch(setStatus(status));
+        }
     }
+    catch (e) {  
+        dispatch(setGlobalError(e.message));
+    }
+    
 
 }
 
