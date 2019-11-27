@@ -89,7 +89,6 @@ const SamuraiJSApp = (props) => {
             </Provider>
         </BrowserRouter>
     )
-
 }
 
 
