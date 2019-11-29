@@ -36,6 +36,33 @@ export const authAPI = {
         return instance.delete(`auth/login`);
     }
 }
+export const todosAPI = {
+    getTodos() {
+        return instance.get(`todo-lists`).then(response => response.data);
+    },
+    createTodolist(title) {
+        return instance.post(`todo-lists`, {title: title});
+    },
+    deleteTodolist(todolistId) {
+        return instance.delete(`todo-lists/${todolistId}`);
+    },
+    updateTodolistTitle(todolistId, title) {
+        return instance.put(`todo-lists/${todolistId}`, {title: title});
+    },
+    getTodolistTasks(todolistId) {
+        return instance.get(`todo-lists/${todolistId}/tasks`).then(response => response.data);
+    },
+    createNewTask(todolistId) {
+        return instance.post(`todo-lists/${todolistId}/tasks`);
+    },
+    updateTask(todolistId, taskId, text) {
+        return instance.put(`/todo-lists/${todolistId}/tasks/${taskId}`, text);
+    },
+    deleteTask(todolistId, taskId) {
+        return instance.delete(`/todo-lists/${todolistId}/tasks/${taskId}`);
+    }
+    
+}
 
 export const securityAPI = {
     getCaptchaUrl() {
