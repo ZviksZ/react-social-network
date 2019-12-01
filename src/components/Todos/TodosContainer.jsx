@@ -1,8 +1,8 @@
-import React, {Component}                              from 'react';
-import {connect}                                       from "react-redux";
-import {compose}                                       from "redux";
-import {deleteTodo, editTodoTitle, getTodos, postTodo} from "../../redux/todos-reducer.js";
-import {Todos}                                         from "./Todos.jsx";
+import React, {Component}                                                                  from 'react';
+import {connect}                                                                           from "react-redux";
+import {compose}                                                                           from "redux";
+import {deleteTodo, editTodoTitle, getTodoListTasks, getTodos, postTodo, postTodoListTask} from "../../redux/todos-reducer.js";
+import {Todos}                                                                             from "./Todos.jsx";
 
 
 class TodosContainer extends Component {
@@ -15,6 +15,8 @@ class TodosContainer extends Component {
                     todos={this.props.todos}
                     postTodo={this.props.postTodo}
                     editTodoTitle={this.props.editTodoTitle}
+                    getTodoListTasks={this.props.getTodoListTasks}
+                    postTodoListTask={this.props.postTodoListTask}
       />
    }
 }
@@ -27,4 +29,11 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-   connect(mapStateToProps, {getTodos, postTodo, deleteTodo, editTodoTitle}))(TodosContainer);
+   connect(mapStateToProps, {
+      getTodos, 
+      postTodo, 
+      deleteTodo, 
+      editTodoTitle,
+      getTodoListTasks,
+      postTodoListTask
+   }))(TodosContainer);

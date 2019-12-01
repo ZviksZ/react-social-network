@@ -24,7 +24,10 @@ export const Todos = (props) => {
          
          <TodoList todos={props.todos} 
                    deleteTodo={props.deleteTodo}
-                   editTodoTitle={props.editTodoTitle}/>
+                   editTodoTitle={props.editTodoTitle}
+                   getTodoListTasks={props.getTodoListTasks}
+                   postTodoListTask={props.postTodoListTask}
+         />
       </div>
    );
 }

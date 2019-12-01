@@ -8,8 +8,12 @@ export const TodoList = (props) => {
             props.todos.map(t => <TodoItem key={t.id} 
                                            id={t.id} 
                                            title={t.title}
+                                           items={t.items}
                                            deleteTodo={props.deleteTodo}
-                                           editTodoTitle={props.editTodoTitle}/>)
+                                           editTodoTitle={props.editTodoTitle}
+                                           getTodoListTasks={props.getTodoListTasks}
+                                           postTodoListTask={props.postTodoListTask}
+            />)
          }
       </ul>
    );

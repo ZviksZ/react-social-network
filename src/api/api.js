@@ -49,11 +49,11 @@ export const todosAPI = {
     updateTodolistTitle(todolistId, title) {
         return instance.put(`todo-lists/${todolistId}`, {title: title});
     },
-    getTodolistTasks(todolistId) {
-        return instance.get(`todo-lists/${todolistId}/tasks`).then(response => response.data);
+    getTodolistTasks(todolistId, itemsPortion, pageSize) {
+        return instance.get(`todo-lists/${todolistId}/tasks?page=${itemsPortion}&count=${pageSize}`).then(response => response.data);
     },
-    createNewTask(todolistId) {
-        return instance.post(`todo-lists/${todolistId}/tasks`);
+    createNewTask(todolistId, title) {
+        return instance.post(`todo-lists/${todolistId}/tasks`, {title: title});
     },
     updateTask(todolistId, taskId, text) {
         return instance.put(`/todo-lists/${todolistId}/tasks/${taskId}`, text);

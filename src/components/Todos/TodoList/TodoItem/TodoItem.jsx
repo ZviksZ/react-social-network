@@ -1,8 +1,9 @@
-import React, {useState}      from 'react';
+import React, {useState, useEffect}      from 'react';
 
-export const TodoItem = ({id, title, deleteTodo,editTodoTitle}) => {
+export const TodoItem = ({id, title, items, deleteTodo,editTodoTitle,getTodoListTasks,postTodoListTask}) => {
    const [editMode, setEditMode] = useState(false)
    const [value, setValue] = useState(title)
+   const [taskTitle, setTaskTitle] = useState('');
    
    const deleteItem = (id) => {
       deleteTodo(id)
@@ -11,6 +12,15 @@ export const TodoItem = ({id, title, deleteTodo,editTodoTitle}) => {
    const editTitle = () => {      
       editTodoTitle(id, value)      
       setEditMode(false);
+   }
+
+   useEffect( () => {
+      getTodoListTasks(id)
+   }, [])
+   
+   const onAddTask = (e) => {
+      e.preventDefault();
+      postTodoListTask(id, taskTitle);
    }
    
    return (
@@ -27,10 +37,26 @@ export const TodoItem = ({id, title, deleteTodo,editTodoTitle}) => {
                
                :
                title
-         }
-         
+         }        
 
          <button onClick={() => deleteItem(id)}>Delete todo</button>
+
+         <br/>
+         
+         
+         <ul>
+            {
+               items ? items.map(i => <li id={i.id} key={i.id}>{i.title}</li>) : null
+            }
+         </ul>
+
+         <form onSubmit={onAddTask}>
+            <input type="text"
+                   onChange={(e) => setTaskTitle(e.target.value)}
+                   value={taskTitle}
+            />
+            <button onClick={editTitle}>add task</button>
+         </form>
       </li>
    );
 }
