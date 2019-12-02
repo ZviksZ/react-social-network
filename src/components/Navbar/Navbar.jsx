@@ -16,7 +16,7 @@ const Navbar = (props) => {
                 <li className={s.item}>
                     <NavLink to="/users" activeClassName={s.activeLink}>Users</NavLink>
                 </li>
-                <li className={s.item}>
+                <li className={`${s.item} ${s.disabledLink}`}>
                     <NavLink to="/todos" activeClassName={s.activeLink}>Todos</NavLink>
                 </li>
                 <li className={`${s.item} ${s.disabledLink}`}>

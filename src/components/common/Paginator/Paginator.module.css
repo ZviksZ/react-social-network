@@ -2,8 +2,14 @@
     color: gold;
     font-weight: bold;
 }
+.pagination {
+    display: flex;
+    align-items: center;
+    margin: 5px 10px 30px;
+}
 .pagination span {
     cursor: pointer;
+    font-size: 20px;
 }
 
 .paginator {

@@ -6,6 +6,8 @@ const DELETE_TODOLIST = 'my-social-network/todos/DELETE_TODOLIST';
 const EDIT_TODOLIST_TITLE = 'my-social-network/todos/EDIT_TODOLIST_TITLE';
 const GET_TODOLIST_TASKS = 'my-social-network/todos/GET_TODOLIST_TASKS';
 const ADD_NEW_TODOLIST_TASK = 'my-social-network/todos/ADD_NEW_TODOLIST_TASK';
+const UPDATE_TASK = 'my-social-network/todos/UPDATE_TASK';
+const DELETE_TASK = 'my-social-network/todos/DELETE_TASK';
 
 let initialState = {
    todos: [],   
@@ -47,13 +49,7 @@ const todosReducer = (state = initialState, action) => {
          return {
             ...state,
             todos: state.todos.map(t => {
-               if (t.id === action.todoListId) { 
-                     return {
-                        ...t,
-                        items: action.items
-                     }                
-               }
-               return t;
+               return (t.id === action.todoListId) ? {...t,items: action.items} : t;
             })
          }
       }
@@ -68,6 +64,30 @@ const todosReducer = (state = initialState, action) => {
             })
          }
       }
+      case UPDATE_TASK: {
+         return {
+            ...state,
+            todos: state.todos.map(t => {
+               if (t.id === action.todoListId) {
+                  return {
+                     ...t, 
+                     items: t.items.map(item => {
+                        if (item.id === action.taskId) {
+                           return action.newItem
+                        } 
+                     })
+                  }
+               }
+               return t;
+            })
+         }
+      }
+      case DELETE_TASK: {
+         return {
+            ...state,
+            
+         }
+      }
       default:
          return state;
    }
@@ -79,6 +99,8 @@ export const deleteTodoList = todoListId => ({type: DELETE_TODOLIST, todoListId}
 export const editTodoListTitle = (todoListId, title) => ({type: EDIT_TODOLIST_TITLE, todoListId, title})
 export const setTodoListTasks = (todoListId, items) => ({type: GET_TODOLIST_TASKS, todoListId, items})
 export const addTodoListTask = (todoListId, newTask) => ({type: ADD_NEW_TODOLIST_TASK, todoListId, newTask})
+export const updateTaskTitleAC = (todoListId, taskId, newItem) => ({type: UPDATE_TASK, todoListId, taskId, newItem})
+export const deleteTaskAC = (todoListId, taskId) => ({type: DELETE_TASK, todoListId, taskId})
 
 
 
@@ -114,17 +136,36 @@ export const editTodoTitle = (todoListId, title) => async (dispatch) => {
 
 export const getTodoListTasks = (todolistId, itemsPortion = 1, pageSize = 100) => async (dispatch) => {
    let response = await todosAPI.getTodolistTasks(todolistId, itemsPortion, pageSize);
-   console.log('tasks',response)
+   
    dispatch(setTodoListTasks(todolistId, response.items))
 }
+
 export const postTodoListTask = (todoListId, title) => async (dispatch) => {
    let response = await todosAPI.createNewTask(todoListId, title);
-
-   console.log('postTodo tasks',response)   
    
    if (response.data.resultCode === 0) {      
       dispatch(addTodoListTask(todoListId, response.data.data.item));
    }
+}
+
+
+export const updateTaskTitle = (todoListId, taskId, newItem) => async (dispatch) => {
+   
+   let response = await todosAPI.updateTask(todoListId, taskId, newItem);
+   
+   console.log('task title',response)
+  /* if (response.data.resultCode === 0) {      
+      dispatch(updateTaskTitleAC(todoListId, response.data.data.item));
+   }*/
+}
+export const deleteTaskItem = (todoListId, taskId) => async (dispatch) => {
+   
+   let response = await todosAPI.deleteTask(todoListId, taskId);
+   
+   console.log(response)
+  /* if (response.data.resultCode === 0) {      
+      dispatch(updateTaskTitleAC(todoListId, response.data.data.item));
+   }*/
 }
 
 

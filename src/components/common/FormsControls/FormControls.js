@@ -20,15 +20,15 @@ export const FormControl = ({input, meta: {touched, error}, children, ...props})
 
 export const Textarea = (props) => {
     const {input, meta, children, ...restProps} = props;
-    return <FormControl {...props}>
-        <textarea {...input} {...restProps} />
+    return <FormControl {...props} className="form-group">
+        <textarea {...input} {...restProps} className="form-control"/>
     </FormControl>
 }
 
 export const Input = (props) => {
     const {input, meta, children, ...restProps} = props;
-    return <FormControl {...props}>
-        <input {...input} {...restProps} />
+    return <FormControl {...props} className="form-group">
+        <input {...input} {...restProps} className="form-control"/>
     </FormControl>
 }
 
@@ -36,8 +36,9 @@ export const Input = (props) => {
 
 export const createField = (placeholder, name, validators, component, props = {}, text = "") => {
     return (
-        <div>
+        <div className="form-group">
             <Field name={name}
+                   className="form-control"
                    placeholder={placeholder}
                    component={component}
                    {...props}

@@ -1,6 +1,9 @@
 .active{
     color: gold
 }
+.dialog {
+    margin-bottom: 5px;    
+}
 .dialog a.activeLink{
     color: gold
 }
@@ -12,4 +15,5 @@
     width: 50px;
     border-radius: 50%;
     height: 50px;
+    margin-right: 10px;
 }

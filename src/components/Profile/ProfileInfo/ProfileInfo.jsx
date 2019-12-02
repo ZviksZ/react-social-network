@@ -38,7 +38,7 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
                     <img className={s.avaImg} src={profile.photos.large || userPhoto} alt=""/>
                 </div>
 
-                {isOwner && <input type={'file'} onChange={onMainPhotoSelected}/>}
+                
 
                 {editMode ?
                     <ProfileDataFormReduxForm initialValues={profile} 
@@ -49,6 +49,13 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
                                  isOwner={isOwner}
                                  goToEditMode={ () => {setEditMode(true)} }/>
                 }
+
+               {isOwner && editMode &&
+               <div>
+                  <span>Change your photo</span>
+                  <input type={'file'} onChange={onMainPhotoSelected}/>
+               </div>
+               }
 
 
             </div>

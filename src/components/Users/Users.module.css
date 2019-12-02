@@ -1,10 +1,16 @@
 .mainLeft {
-    width: 95px;
+    width: 110px;
     text-align: center;
 }
+.mainLeft button{
+    margin-top: 10px;
+}
 .userItem {
+    width: 33%;
     display: flex;
     justify-content: flex-start;
+    margin-bottom: 10px;
+    overflow: hidden;
 }
 .wrap {
     display: flex;
@@ -13,8 +19,14 @@
     padding: 10px 40px 10px 15px;
 }
 .avatar {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-right: 10px;
+}
+.userList {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 0 10px;
 }
 

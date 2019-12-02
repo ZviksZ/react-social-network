@@ -8,6 +8,18 @@ import styles               from './../../common/FormsControls/FormControls.modu
 const LoginForm = ({captchaUrl, handleSubmit, error}) => {
     return (
         <form className={s.loginForm} onSubmit={handleSubmit}>
+           
+           <div>
+              <h4>Use test account data</h4>
+              <p>
+                 <strong>Email: </strong>
+                 <span>free@samuraijs.com</span>
+              </p>
+              <p>
+                 <strong>Password: </strong>
+                 <span>free</span>
+              </p>
+           </div>
 
             {createField("Login", 'email', [required], Input)}
 

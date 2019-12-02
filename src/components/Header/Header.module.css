@@ -6,7 +6,7 @@
     align-items: center;
 }
 .header_logo {
-    width: 12%;
+    width: 18%;
 }
 .loginBlock {
     margin-left: auto;
@@ -26,10 +26,12 @@
 }
 .rightWrap {
     display: flex;
+    align-items: center;
 }
 .rightWrap button {
     width: 120px;
 }
 .loginName {
     margin-right: 15px;
+    font-weight: bold;
 }

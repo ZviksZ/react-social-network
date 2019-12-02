@@ -1,8 +1,17 @@
-import React, {Component}                                                                  from 'react';
-import {connect}                                                                           from "react-redux";
-import {compose}                                                                           from "redux";
-import {deleteTodo, editTodoTitle, getTodoListTasks, getTodos, postTodo, postTodoListTask} from "../../redux/todos-reducer.js";
-import {Todos}                                                                             from "./Todos.jsx";
+import React, {Component} from 'react';
+import {connect}          from "react-redux";
+import {compose}          from "redux";
+import {
+   deleteTaskItem,
+   deleteTodo,
+   editTodoTitle,
+   getTodoListTasks,
+   getTodos,
+   postTodo,
+   postTodoListTask,
+   updateTaskTitle,
+} from "../../redux/todos-reducer.js";
+import {Todos}            from "./Todos.jsx";
 
 
 class TodosContainer extends Component {
@@ -17,6 +26,8 @@ class TodosContainer extends Component {
                     editTodoTitle={this.props.editTodoTitle}
                     getTodoListTasks={this.props.getTodoListTasks}
                     postTodoListTask={this.props.postTodoListTask}
+                    updateTaskTitle={this.props.updateTaskTitle}
+                    deleteTaskItem={this.props.deleteTaskItem}
       />
    }
 }
@@ -30,10 +41,12 @@ let mapStateToProps = (state) => {
 
 export default compose(
    connect(mapStateToProps, {
-      getTodos, 
-      postTodo, 
-      deleteTodo, 
+      getTodos,
+      postTodo,
+      deleteTodo,
       editTodoTitle,
       getTodoListTasks,
-      postTodoListTask
+      postTodoListTask,
+      updateTaskTitle,
+      deleteTaskItem,
    }))(TodosContainer);

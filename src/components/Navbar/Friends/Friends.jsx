@@ -8,7 +8,7 @@ const Friends = (props) => {
 
     return (
         <div className={s.friends}>
-            <h3>Friends({friendsElements.length})</h3>
+            <h5>Friends({friendsElements.length})</h5>
             <div className={s.friendsList}>
                 { friendsElements }
             </div>

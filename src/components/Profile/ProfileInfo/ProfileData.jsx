@@ -1,6 +1,7 @@
 import React   from 'react';
 import Contact from "./Contact/Contact";
 import s       from './ProfileInfo.module.css';
+import Button    from '@material-ui/core/Button';
 
 
 const ProfileData = ({profile, isOwner, goToEditMode}) => {
@@ -10,14 +11,16 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
         <div className={s.rightSide}>
             {isOwner &&
             <div>
-                <button onClick={goToEditMode}>Edit</button>
+
+                <Button variant="outlined" onClick={goToEditMode}>
+                    Edit
+                </Button>
             </div>
             }
 
 
             <div className={s.content_user_data}>
-
-                <h2 className={s.fullName}>{profile.fullName}</h2>
+                <h2 className={`${s.fullName}`}>{profile.fullName}</h2>
 
                 <div>
                     <div className={s.description}>

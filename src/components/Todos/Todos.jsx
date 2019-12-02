@@ -27,6 +27,8 @@ export const Todos = (props) => {
                    editTodoTitle={props.editTodoTitle}
                    getTodoListTasks={props.getTodoListTasks}
                    postTodoListTask={props.postTodoListTask}
+                   updateTaskTitle={props.updateTaskTitle}
+                   deleteTaskItem={props.deleteTaskItem}
          />
       </div>
    );

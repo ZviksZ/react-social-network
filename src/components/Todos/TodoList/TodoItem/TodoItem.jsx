@@ -1,30 +1,35 @@
-import React, {useState, useEffect}      from 'react';
+import React, {useState, useEffect} from 'react';
+import {TodoTaskItem}               from "../TodoTaskItem/TodoTaskItem.jsx";
 
-export const TodoItem = ({id, title, items, deleteTodo,editTodoTitle,getTodoListTasks,postTodoListTask}) => {
+export const TodoItem = ({
+                            id, title, items, deleteTodo,
+                            editTodoTitle, getTodoListTasks, postTodoListTask,
+                            updateTaskTitle, deleteTaskItem
+                         }) => {
    const [editMode, setEditMode] = useState(false)
    const [value, setValue] = useState(title)
    const [taskTitle, setTaskTitle] = useState('');
-   
+
    const deleteItem = (id) => {
       deleteTodo(id)
    }
-   
-   const editTitle = () => {      
-      editTodoTitle(id, value)      
+
+   const editTitle = () => {
+      editTodoTitle(id, value)
       setEditMode(false);
    }
 
-   useEffect( () => {
+   useEffect(() => {
       getTodoListTasks(id)
    }, [])
-   
+
    const onAddTask = (e) => {
       e.preventDefault();
       postTodoListTask(id, taskTitle);
    }
-   
+
    return (
-      <li id={id} key={id} onDoubleClick={() => setEditMode(true)}>
+      <li id={id} key={id}>
          {
             editMode ?
                <div>
@@ -34,19 +39,24 @@ export const TodoItem = ({id, title, items, deleteTodo,editTodoTitle,getTodoList
                   />
                   <button onClick={editTitle}>Save</button>
                </div>
-               
+
                :
-               title
-         }        
+               <span onDoubleClick={() => setEditMode(true)}>{title}</span>
+         }
 
          <button onClick={() => deleteItem(id)}>Delete todo</button>
 
          <br/>
          
-         
          <ul>
-            {
-               items ? items.map(i => <li id={i.id} key={i.id}>{i.title}</li>) : null
+            { items ? items.map(i => <TodoTaskItem id={i.id}
+                                                    item={i}
+                                                    todoListId={i.todoListId}
+                                                    title={i.title}
+                                                    updateTaskTitle={updateTaskTitle}
+                                                    deleteTaskItem={deleteTaskItem}
+                                                    key={i.id}/>)
+                  : null
             }
          </ul>
 
