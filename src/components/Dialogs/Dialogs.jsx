@@ -5,12 +5,20 @@ import {AddMessageFormRedux} from "./DialogsForm/DialogsForm.jsx";
 import Message               from "./Message/Message";
 
 
-const Dialogs = (props) => {
-   let dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
-   let messagesElements = props.dialogsPage.messages.map(m => <Message key={m.id} message={m.message} id={m.id}/>)
+const Dialogs = (props) => { 
+   let dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem key={d.id}
+                                                                        changeDialog={props.changeDialog}
+                                                                        name={d.name} 
+                                                                        id={d.id}/>)
+
+   let messagesElements = props.dialogsPage.dialogs.map(m => {
+      if(props.dialogsPage.currentDialogId === m.id) {
+         return m.messages.map(mess => <Message key={mess.id} message={mess.message} id={mess.id}/>)
+      } 
+   })
 
    let addNewMessage = (values) => {
-      props.sendMessage(values.newMessageText)      
+      props.sendMessage(props.dialogsPage.currentDialogId, values.newMessageText)      
    }
    
    return (

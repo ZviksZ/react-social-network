@@ -22,8 +22,8 @@
     border: 2px solid gold;
     border-radius: 10px;
     position: relative;
-    padding-bottom: 200px;
-    max-height: 70vh;
+    padding-bottom: 150px;
+    height: 70vh;
 }
 .messagesWrap {
     max-height: 100%;

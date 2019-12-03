@@ -1,24 +1,50 @@
 import {reset} from 'redux-form';
 
 const SEND_MESSAGE = 'my-social-network/dialogs/SEND-MESSAGE';
+const CHANGE_CURRENT_DIALOG = 'my-social-network/dialogs/CHANGE_CURRENT_DIALOG';
 
 let initialState = {
    dialogs: [
-      {id: 1, name: 'John'},
-      {id: 2, name: 'Eddy'},
-      {id: 3, name: 'Molly'},
-      {id: 4, name: 'CJ'},
-      {id: 5, name: 'Alex'},
-      {id: 6, name: 'Mark'},
-      {id: 7, name: 'Sam'},
+      {
+         id: 1,
+         name: 'John',
+         messages: [
+            {id: 1, message: 'Hello'},
+            {id: 2, message: 'How are you?'},
+            {id: 3, message: 'Fine'},
+            {id: 4, message: 'Yo'},
+            {id: 5, message: 'Yo2'},
+         ]
+      },
+      {
+         id: 2,
+         name: 'Alex',
+         messages: [
+            {id: 1, message: 'What the weather?'},
+            {id: 2, message: 'Great?'},
+         ]
+      },
+      {
+         id: 3,
+         name: 'Molly',
+         messages: [
+            {id: 1, message: 'How old are you?'},
+            {id: 2, message: 'Fine'},
+            {id: 3, message: 'I am 30'},
+            {id: 4, message: 'Good'},
+         ]
+      },
+      {
+         id: 4,
+         name: 'Eddy',
+         messages: [
+            {id: 1, message: 'Hello'},
+            {id: 2, message: 'It is my new job'},
+            {id: 3, message: 'Fine'},
+         ]
+      },
    ],
-   messages: [
-      {id: 1, message: 'Hello'},
-      {id: 2, message: 'How are you?'},
-      {id: 3, message: 'Fine'},
-      {id: 4, message: 'Yo'},
-      {id: 5, message: 'Yo2'},
-   ]
+   currentDialogId: 1
 };
 
 const dialogsReducer = (state = initialState, action) => {
@@ -26,21 +52,32 @@ const dialogsReducer = (state = initialState, action) => {
       case SEND_MESSAGE:
          return {
             ...state,
-            messages: [...state.messages, {
-               id: state.messages.length + 1,
-               message: action.message
-            }]
+            dialogs: state.dialogs.map(d => {
+               if(action.dialogId === d.id) {
+                  d.messages.push({
+                     id: d.messages.length + 1,
+                     message: action.message
+                  })
+               }
+               return d;
+            })
+         }
+      case CHANGE_CURRENT_DIALOG:
+         return {
+            ...state,
+            currentDialogId: action.currentId
          }
       default:
          return state;
    }
 }
 
-export const sendMessageAC = (message) => ({type: SEND_MESSAGE, message})
+export const sendMessageAC = (dialogId, message) => ({type: SEND_MESSAGE, dialogId, message})
+export const changeDialog = (currentId) => ({type: CHANGE_CURRENT_DIALOG, currentId})
 
 
-export const sendMessage = (message) => (dispatch) => {
-   dispatch(sendMessageAC(message))
+export const sendMessage = (dialogId, message) => (dispatch) => {
+   dispatch(sendMessageAC(dialogId, message))
 
    dispatch(reset('dialogAddMessageForm'));
 }
