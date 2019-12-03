@@ -45,6 +45,8 @@ export const setAuthUserDataThunk = () => async (dispatch) => {
     if (response.resultCode === 0) {
         let {id, email, login} = response.data;
         dispatch(setAuthUserData(id, email, login, true));
+    } else {
+        dispatch(setAuthUserData(null, null, null, false));
     }
 }
 
@@ -76,7 +78,7 @@ export const logoutMe = () => async (dispatch) => {
     let response = await authAPI.logout()
 
     if (response.data.resultCode === 0) {
-        dispatch(setAuthUserData(null, null, null, false));
+       dispatch(setAuthUserData(null, null, null, false));
     }
 }
 

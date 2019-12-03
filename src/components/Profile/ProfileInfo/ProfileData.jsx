@@ -10,7 +10,7 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
     return (
         <div className={s.rightSide}>
             {isOwner &&
-            <div>
+            <div className={s.editButtonWrap}>
 
                 <Button variant="outlined" onClick={goToEditMode}>
                     Edit

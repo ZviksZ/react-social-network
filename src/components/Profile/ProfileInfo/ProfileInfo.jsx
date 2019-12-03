@@ -33,10 +33,17 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
                  alt=""/>
             <div className={s.content_info}>
 
+               {!editMode ?
+                  <div className={s.leftSide}>
+                     <img className={s.avaImg} src={profile.photos.large || userPhoto} alt=""/>
 
-                <div className={s.leftSide}>
-                    <img className={s.avaImg} src={profile.photos.large || userPhoto} alt=""/>
-                </div>
+
+                  </div>
+                  :
+                  null
+
+               }
+               
 
                 
 
@@ -47,21 +54,26 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
                     :
                     <ProfileData profile={profile} 
                                  isOwner={isOwner}
+                                 updateStatus={updateStatus}
+                                 status={status}
                                  goToEditMode={ () => {setEditMode(true)} }/>
+                  
                 }
-
+                
+               
+                
                {isOwner && editMode &&
                <div>
-                  <span>Change your photo</span>
+                  <span><b>Change your photo</b></span>
                   <input type={'file'} onChange={onMainPhotoSelected}/>
                </div>
                }
-
+              
 
             </div>
-
             <ProfileStatusWithHooks updateStatus={updateStatus}
-                                    status={status}/>
+                                   status={status}/>
+            
 
         </div>
     );

@@ -4,6 +4,9 @@
     width: 40%;
     margin: 0 auto;
     text-align: center;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    justify-content: center;
 }
 .loginForm > div {
     width: 100%;    
@@ -15,4 +18,13 @@
 .loginForm input[type='checkbox']{
     width: auto;
     margin-bottom: 15px;
+}
+.loginForm input[name='rememberMe'] {
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
+}
+.loginForm input[name='rememberMe'] + span {
+    margin-bottom: 30px;
+    font-weight: 700;
 }

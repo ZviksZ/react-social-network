@@ -48,3 +48,18 @@
 .formButtons button{
     margin-right: 5px;
 }
+
+@media only screen and (max-width: 991px)  {
+    /*.dialogs {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        position: relative;
+    }
+    .dialogsItems {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .dialogsItems .dialog{
+        width: 33%;
+    }*/
+}

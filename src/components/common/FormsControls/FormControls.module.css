@@ -12,4 +12,29 @@
 .profileForm {
     width: 100%;
 }
-
+.formGroup {
+    margin-bottom: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.formGroup span{
+    width: 100%;
+    text-align: center;
+}
+.formControl {
+    width: 100%;
+}
+.checkboxInput input{
+    width: 25px;
+    outline: none;
+}
+.checkboxInput input:focus {
+    border-color: transparent;
+    box-shadow: 0 0 0 0;
+}
+.loginBtn {
+    margin-top: 30px !important;
+}
+.inputText {
+    font-weight: 700;
+}

@@ -17,7 +17,7 @@ const ProfileDataForm = ({handleSubmit, profile, error}) => {
         <div>
             <b>Full name</b>: {createField("Full name", "fullName", [], Input)}
         </div>
-        <div>
+        <div className={style.checkboxInput}>
             <b>Looking for a job</b>: {createField("", "lookingForAJob", [], Input, {type: "checkbox"})}
         </div>
 

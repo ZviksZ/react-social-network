@@ -30,7 +30,9 @@ const Navbar = (props) => {
                 </li>
             </ul>
             {
-                props.users.length ? <Friends friends={props.users}/> : null
+                props.users.length ? 
+                   <Friends friends={props.users}/> 
+                   : null
             }
             
         </nav>

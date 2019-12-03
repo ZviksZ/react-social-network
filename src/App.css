@@ -14,11 +14,28 @@ body {
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
   grid-gap: 10px;
-  width: 1170px;
+  max-width: 1170px;
+  width: 100%;
   margin: 0 auto;
 }
 .app-wrapper-content {
   grid-area: content;
   background: rgba(0, 33, 255, 0.34);
+}
+
+@media only screen and (max-width: 991px)  {
+  .app-wrapper {
+    display: grid;
+    grid-template-areas:
+            "header header header"
+            "nav nav nav"
+            "content content content";
+    grid-template-rows: 60px auto 1fr;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 

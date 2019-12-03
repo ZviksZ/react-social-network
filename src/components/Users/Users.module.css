@@ -30,3 +30,13 @@
     padding: 0 10px;
 }
 
+@media only screen and (max-width: 991px)  {
+    .userItem {
+        width: 50%;
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 10px;
+        overflow: hidden;
+    }
+}
+

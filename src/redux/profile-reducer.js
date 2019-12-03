@@ -1,6 +1,7 @@
 import {profileAPI}     from "../api/api.js";
 import {stopSubmit}     from "redux-form";
 import {setGlobalError} from "./app-reducer.js";
+import {reset} from 'redux-form';
 
 const ADD_POST = 'my-social-network/profile/ADD-POST';
 const DELETE_POST = 'my-social-network/profile/DELETE_POST';
@@ -60,7 +61,7 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPost = (post) => ({type: ADD_POST, post})
+export const addPostAC = (post) => ({type: ADD_POST, post})
 
 export const deletePost = (postId) => ({type: DELETE_POST, postId})
 
@@ -70,6 +71,11 @@ export const setStatus = (status) => ({type: SET_STATUS, status})
 
 export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
 
+
+export const addPost = (post) => (dispatch) => {    
+    dispatch(addPostAC(post));
+    dispatch(reset('profileAddNewPostForm'));
+}
 
 export const setUserProfileThunk = (userId) => async (dispatch) => {
     let response = await profileAPI.getUserProfile(userId)

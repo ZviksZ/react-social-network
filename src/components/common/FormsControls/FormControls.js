@@ -36,14 +36,14 @@ export const Input = (props) => {
 
 export const createField = (placeholder, name, validators, component, props = {}, text = "") => {
     return (
-        <div className="form-group">
+        <div className={`${styles.formGroup} form-group`}>
             <Field name={name}
-                   className="form-control"
+                   className={`${styles.formControl} form-control`}
                    placeholder={placeholder}
                    component={component}
                    {...props}
                    validate={validators}/>
-            {text}
+            <span className={styles.inputText}>{text}</span>
         </div>
     )
 }

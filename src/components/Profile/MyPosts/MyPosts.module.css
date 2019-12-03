@@ -1,6 +1,10 @@
 .my_post {
     padding: 10px;
+    margin-top: 20px;
 }
 .posts {
+    margin-top: 10px;
+}
+.postBtn {
     margin-top: 10px;
 }
