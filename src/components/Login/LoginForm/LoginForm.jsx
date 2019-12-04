@@ -1,6 +1,6 @@
 import React                from 'react'
 import {reduxForm}          from "redux-form";
-import {required}           from "../../../helpers/validators/validators.js";
+import {required, email}           from "../../../helpers/validators/validators.js";
 import {createField, Input} from "../../common/FormsControls/FormControls.js";
 import s                    from "../Login.module.css";
 import styles               from './../../common/FormsControls/FormControls.module.css';
@@ -21,7 +21,7 @@ const LoginForm = ({captchaUrl, handleSubmit, error}) => {
             </p>
          </div>
 
-         {createField("Login", 'email', [required], Input)}
+         {createField("Login", 'email', [required, email], Input)}
 
          {createField("Password", 'password', [required], Input, {type: 'password'})}
 
