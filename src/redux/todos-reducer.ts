@@ -1,3 +1,4 @@
+
 import {todosAPI}    from "../api/api.js";
 
 const SET_TODOS = 'my-social-network/todos/SET_TODOS';
@@ -10,13 +11,13 @@ const UPDATE_TASK = 'my-social-network/todos/UPDATE_TASK';
 const DELETE_TASK = 'my-social-network/todos/DELETE_TASK';
 
 let initialState = {
-   todos: [],   
+   todos: [],
 };
-
-const todosReducer = (state = initialState, action) => {
+type InitialStateType = typeof initialState
+const todosReducer = (state = initialState, action: any): InitialStateType => {
 
    switch (action.type) {
-      case SET_TODOS: {
+      /*case SET_TODOS: {
          return {
             ...state,
             todos: action.todos
@@ -38,8 +39,8 @@ const todosReducer = (state = initialState, action) => {
          return {
             ...state,
             todos: state.todos.map(t => {
-               if (t.id === action.todoListId) { 
-                     t.title = action.title                  
+               if (t.id === action.todoListId) {
+                     t.title = action.title
                }
                return t;
             })
@@ -70,11 +71,11 @@ const todosReducer = (state = initialState, action) => {
             todos: state.todos.map(t => {
                if (t.id === action.todoListId) {
                   return {
-                     ...t, 
+                     ...t,
                      items: t.items.map(item => {
                         if (item.id === action.taskId) {
                            return action.newItem
-                        } 
+                        }
                      })
                   }
                }
@@ -85,14 +86,14 @@ const todosReducer = (state = initialState, action) => {
       case DELETE_TASK: {
          return {
             ...state,
-            
+
          }
-      }
+      }*/
       default:
          return state;
    }
 }
-
+/*
 export const setTodos = todos => ({type: SET_TODOS, todos})
 export const addTodoList = todoList => ({type: ADD_TODOLIST, todoList})
 export const deleteTodoList = todoListId => ({type: DELETE_TODOLIST, todoListId})
@@ -106,8 +107,8 @@ export const deleteTaskAC = (todoListId, taskId) => ({type: DELETE_TASK, todoLis
 
 export const getTodos = () => async (dispatch) => {
    let response = await todosAPI.getTodos();
-   
-   dispatch(setTodos(response));  
+
+   dispatch(setTodos(response));
 }
 
 export const postTodo = (title) => async (dispatch) => {
@@ -120,7 +121,7 @@ export const postTodo = (title) => async (dispatch) => {
 
 export const deleteTodo = (todoListId) => async (dispatch) => {
    let response = await todosAPI.deleteTodolist(todoListId);
-   
+
    if (response.data.resultCode === 0) {
       dispatch(deleteTodoList(todoListId));
    }
@@ -128,7 +129,7 @@ export const deleteTodo = (todoListId) => async (dispatch) => {
 
 export const editTodoTitle = (todoListId, title) => async (dispatch) => {
    let response = await todosAPI.updateTodolistTitle(todoListId, title);
-   
+
    if (response.data.resultCode === 0) {
       dispatch(editTodoListTitle(todoListId, title));
    }
@@ -136,41 +137,41 @@ export const editTodoTitle = (todoListId, title) => async (dispatch) => {
 
 export const getTodoListTasks = (todolistId, itemsPortion = 1, pageSize = 100) => async (dispatch) => {
    let response = await todosAPI.getTodolistTasks(todolistId, itemsPortion, pageSize);
-   
+
    dispatch(setTodoListTasks(todolistId, response.items))
 }
 
 export const postTodoListTask = (todoListId, title) => async (dispatch) => {
    let response = await todosAPI.createNewTask(todoListId, title);
-   
-   if (response.data.resultCode === 0) {      
+
+   if (response.data.resultCode === 0) {
       dispatch(addTodoListTask(todoListId, response.data.data.item));
    }
 }
 
 
 export const updateTaskTitle = (todoListId, taskId, newItem) => async (dispatch) => {
-   
+
    let response = await todosAPI.updateTask(todoListId, taskId, newItem);
-   
+
    console.log('task title',response)
-  /* if (response.data.resultCode === 0) {      
+  /!* if (response.data.resultCode === 0) {
       dispatch(updateTaskTitleAC(todoListId, response.data.data.item));
-   }*/
+   }*!/
 }
 export const deleteTaskItem = (todoListId, taskId) => async (dispatch) => {
-   
+
    let response = await todosAPI.deleteTask(todoListId, taskId);
-   
+
    console.log(response)
-  /* if (response.data.resultCode === 0) {      
+  /!* if (response.data.resultCode === 0) {
       dispatch(updateTaskTitleAC(todoListId, response.data.data.item));
-   }*/
+   }*!/
 }
 
 
 
 
 
-
+*/
 export default todosReducer;

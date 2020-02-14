@@ -9,7 +9,7 @@ import {
     getTotalUsersCount,
     getUsers
 }                                                       from "../../redux/selectors/users-selectors.js";
-import {follow, unfollow, setCurrentPage, requestUsers} from "../../redux/users-reducer.js";
+import {follow, unfollow, setCurrentPage, requestUsers} from "../../redux/users-reducer";
 import Preloader                                        from "../common/Preloader/Preloader.jsx";
 import Users                                            from "./Users.jsx";
 
@@ -22,7 +22,7 @@ class UsersContainer extends Component {
 
     onPageChanged = (pageNumber) => {
         const {pageSize} = this.props;
-        
+
         this.props.requestUsers(pageNumber, pageSize)
     }
 

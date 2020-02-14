@@ -9,12 +9,12 @@ import HeaderContainer                                                  from "./
 import LoginPage                                                        from "./components/Login/Login.jsx";
 import NavbarContainer                                                  from "./components/Navbar/NavbarContainer.jsx";
 import News                                                             from "./components/News/News";
-import Settings                                                         from "./components/Settings/Settings";
-import Music                                                            from "./components/Music/Music";
-import TodosContainer                                                   from "./components/Todos/TodosContainer";
-import {withSuspense}                                                   from "./hoc/withSuspense.js";
-import {initializeApp, setGlobalError}                                  from "./redux/app-reducer.js";
-import store                                                            from "./redux/redux-store.js";
+import Settings                        from "./components/Settings/Settings";
+import Music                           from "./components/Music/Music";
+/*import TodosContainer                  from "./components/Todos/TodosContainer";*/
+import {withSuspense}                  from "./hoc/withSuspense.js";
+import {initializeApp, setGlobalError} from "./redux/app-reducer.ts";
+import store                           from "./redux/redux-store.js";
 
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.jsx'));
@@ -57,7 +57,7 @@ class App extends Component {
                          render={withSuspense(ProfileContainer)}/>
                   <Route path="/users"
                          render={withSuspense(UsersContainer)}/>
-                  <Route path="/todos" render={() => <TodosContainer/>}/>
+                  {/*<Route path="/todos" render={() => <TodosContainer/>}/>*/}
                   <Route path="/news" render={() => <News/>}/>
                   <Route path="/music" render={() => <Music/>}/>
                   <Route path="/settings" render={() => <Settings/>}/>
@@ -94,7 +94,7 @@ const SamuraiJSApp = (props) => {
 }
 
 
-//<BrowserRouter basename={process.env.PUBLIC_URL}> для обычного деплоя, не для GitHub 
+//<BrowserRouter basename={process.env.PUBLIC_URL}> для обычного деплоя, не для GitHub
 
 //<HashRouter> для GitHub
 

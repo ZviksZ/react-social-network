@@ -10,7 +10,7 @@ import {
    postTodo,
    postTodoListTask,
    updateTaskTitle,
-} from "../../redux/todos-reducer.js";
+}                         from "../../redux/todos-reducer.ts";
 import {Todos}            from "./Todos.jsx";
 
 

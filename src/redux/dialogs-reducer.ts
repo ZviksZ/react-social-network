@@ -3,6 +3,16 @@ import {reset} from 'redux-form';
 const SEND_MESSAGE = 'my-social-network/dialogs/SEND-MESSAGE';
 const CHANGE_CURRENT_DIALOG = 'my-social-network/dialogs/CHANGE_CURRENT_DIALOG';
 
+type MessageType = {
+   id: number
+   message: string | null
+}
+type DialogType = {
+   id: number
+   name: string
+   messages: Array<MessageType>
+}
+
 let initialState = {
    dialogs: [
       {
@@ -43,11 +53,12 @@ let initialState = {
             {id: 3, message: 'Fine'},
          ]
       },
-   ],
-   currentDialogId: 1
+   ] as Array<DialogType>,
+   currentDialogId: 1 as number | null
 };
+type InitialStateType = typeof initialState
 
-const dialogsReducer = (state = initialState, action) => {
+const dialogsReducer = (state = initialState, action: any): InitialStateType => {
    switch (action.type) {
       case SEND_MESSAGE:
          return {
@@ -71,12 +82,21 @@ const dialogsReducer = (state = initialState, action) => {
          return state;
    }
 }
+type SendMessageActionType = {
+   type: typeof SEND_MESSAGE
+   dialogId: number
+   message: string
+}
+export const sendMessageAC = (dialogId: number, message: string):SendMessageActionType => ({type: SEND_MESSAGE, dialogId, message})
 
-export const sendMessageAC = (dialogId, message) => ({type: SEND_MESSAGE, dialogId, message})
-export const changeDialog = (currentId) => ({type: CHANGE_CURRENT_DIALOG, currentId})
+type ChangeDialogActionType = {
+   type: typeof CHANGE_CURRENT_DIALOG
+   currentId: number
+}
+export const changeDialog = (currentId: number):ChangeDialogActionType => ({type: CHANGE_CURRENT_DIALOG, currentId})
 
 
-export const sendMessage = (dialogId, message) => (dispatch) => {
+export const sendMessage = (dialogId: number, message: string) => (dispatch: any) => {
    dispatch(sendMessageAC(dialogId, message))
 
    dispatch(reset('dialogAddMessageForm'));

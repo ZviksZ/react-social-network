@@ -2,7 +2,7 @@ import React, {Component}                                                     fr
 import {connect}                                                              from "react-redux";
 import {withRouter}                                                           from "react-router-dom";
 import {compose}                                                              from "redux";
-import {getStatus, savePhoto, saveProfile, setUserProfileThunk, updateStatus} from "../../redux/profile-reducer.js";
+import {getStatus, savePhoto, saveProfile, setUserProfileThunk, updateStatus} from "../../redux/profile-reducer";
 import Profile                                                                from "./Profile.jsx";
 
 class ProfileContainer extends Component {

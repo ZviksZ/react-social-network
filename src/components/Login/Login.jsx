@@ -1,7 +1,7 @@
 import React            from 'react'
 import {connect}        from "react-redux";
 import {Redirect}       from "react-router-dom";
-import {loginMe}        from "../../redux/auth-reducer.js";
+import {loginMe}        from "../../redux/auth-reducer.ts";
 import {LoginReduxForm} from "./LoginForm/LoginForm.jsx";
 
 
