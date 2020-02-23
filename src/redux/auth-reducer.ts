@@ -5,15 +5,6 @@ const SET_USER_DATA = 'my-social-network/auth/SET_USER_DATA';
 const GET_CAPTCHA_URL_SUCCESS = 'my-social-network/auth/GET_CAPTCHA_URL_SUCCESS';
 
 
-/*export type InitialStateType = {
-    id: number | null
-    isFetching: boolean
-    login: string | null
-    email: string | null
-    isAuth: boolean
-    captchaUrl: string | null
-}*/
-
 let initialState = {
     id: null as number | null,
     isFetching: false as boolean,

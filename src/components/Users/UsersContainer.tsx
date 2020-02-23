@@ -1,6 +1,6 @@
-import React, {Component}                               from 'react'
-import {connect}                                        from "react-redux";
-import {compose}                                        from "redux";
+import React, {Component} from 'react'
+import {connect} from "react-redux";
+import {compose} from "redux";
 import {
     getCurrentPage,
     getFollowingInProgress,
@@ -8,19 +8,35 @@ import {
     getPageSize,
     getTotalUsersCount,
     getUsers
-}                                                       from "../../redux/selectors/users-selectors.js";
+} from "../../redux/selectors/users-selectors";
 import {follow, unfollow, setCurrentPage, requestUsers} from "../../redux/users-reducer";
-import Preloader                                        from "../common/Preloader/Preloader.jsx";
-import Users                                            from "./Users.jsx";
+import Preloader from "../common/Preloader/Preloader.jsx";
+import Users from "./Users";
+import {UserType} from "../../types/types";
+import {AppStateType} from "../../redux/redux-store";
 
-class UsersContainer extends Component {
+
+type PropsType = {
+    users: Array<UserType>
+    currentPage: number
+    totalUsersCount: number
+    pageSize: number
+    isFetching: boolean
+    followingInProgress: Array<number>
+
+    requestUsers: (currentPage: number, pageSize: number) => void
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
+}
+
+class UsersContainer extends Component<PropsType> {
     componentDidMount() {
         const {currentPage, pageSize} = this.props;
 
         this.props.requestUsers(currentPage, pageSize)
     }
 
-    onPageChanged = (pageNumber) => {
+    onPageChanged = (pageNumber: number) => {
         const {pageSize} = this.props;
 
         this.props.requestUsers(pageNumber, pageSize)
@@ -44,7 +60,8 @@ class UsersContainer extends Component {
 
     }
 }
-let mapStateToProps = (state) => {
+
+let mapStateToProps = (state: AppStateType) => {
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),

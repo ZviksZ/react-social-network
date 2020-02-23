@@ -14,11 +14,11 @@ import Music                           from "./components/Music/Music";
 /*import TodosContainer                  from "./components/Todos/TodosContainer";*/
 import {withSuspense}                  from "./hoc/withSuspense.js";
 import {initializeApp, setGlobalError} from "./redux/app-reducer.ts";
-import store                           from "./redux/redux-store.js";
+import store                           from "./redux/redux-store.ts";
 
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.jsx'));
-const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer.jsx'));
+const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer.tsx'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer.jsx'));
 
 
