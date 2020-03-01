@@ -20,7 +20,9 @@ let rootReducer = combineReducers({
 });
 
 type RootReducerType = typeof rootReducer;
+type DialogsPageReducerType = typeof dialogsReducer;
 export type AppStateType = ReturnType<RootReducerType>
+export type DialogsPageType = ReturnType<DialogsPageReducerType>
 
 // @ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

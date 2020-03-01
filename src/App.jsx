@@ -5,20 +5,21 @@ import './App.css';
 import {compose}                                                        from "redux";
 import ErrorPopup                                                       from "./components/common/ErrorPopup/ErrorPopup.jsx";
 import Preloader                                                        from "./components/common/Preloader/Preloader.jsx";
-import HeaderContainer                                                  from "./components/Header/HeaderContainer.jsx";
-import LoginPage                                                        from "./components/Login/Login.jsx";
-import NavbarContainer                                                  from "./components/Navbar/NavbarContainer.jsx";
-import News                                                             from "./components/News/News";
+import HeaderContainer                 from "./components/Header/HeaderContainer.jsx";
+import LoginPage                       from "./components/Login/Login.jsx";
+import NavbarContainer                 from "./components/Navbar/NavbarContainer.jsx";
+import News                            from "./components/News/News";
 import Settings                        from "./components/Settings/Settings";
 import Music                           from "./components/Music/Music";
+import UsersContainer                  from "./components/Users/UsersContainer";
 /*import TodosContainer                  from "./components/Todos/TodosContainer";*/
 import {withSuspense}                  from "./hoc/withSuspense.js";
 import {initializeApp, setGlobalError} from "./redux/app-reducer.ts";
 import store                           from "./redux/redux-store.ts";
 
 
-const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.jsx'));
-const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer.tsx'));
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.tsx'));
+//const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer.tsx'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer.jsx'));
 
 
@@ -56,7 +57,7 @@ class App extends Component {
                   <Route path="/profile/:userId?"
                          render={withSuspense(ProfileContainer)}/>
                   <Route path="/users"
-                         render={withSuspense(UsersContainer)}/>
+                         render={() => <UsersContainer pageTitle={'Users'}/>}/>
                   {/*<Route path="/todos" render={() => <TodosContainer/>}/>*/}
                   <Route path="/news" render={() => <News/>}/>
                   <Route path="/music" render={() => <Music/>}/>
