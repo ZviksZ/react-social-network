@@ -1,5 +1,4 @@
-
-import {todosAPI}    from "../api/api.js";
+//import {todosAPI}    from "../api/api";
 
 const SET_TODOS = 'my-social-network/todos/SET_TODOS';
 const ADD_TODOLIST = 'my-social-network/todos/ADD_TODO';
