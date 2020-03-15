@@ -1,6 +1,6 @@
-import React        from 'react';
-import {connect}    from "react-redux";
-import Navbar       from "./Navbar.jsx";
+import React     from 'react';
+import {connect} from "react-redux";
+import Navbar    from "./Navbar.tsx";
 
 
 let mapStateToProps = (state) => {

@@ -2,8 +2,14 @@ import React     from 'react';
 import {NavLink} from 'react-router-dom';
 import Friends   from "./Friends/Friends";
 import s         from './Navbar.module.css';
+import {DialogsPageType} from "../../redux/redux-store";
+import {UserType} from "../../types/types";
 
-const Navbar = (props) => {
+
+type PropsType = {
+    users: Array<UserType>
+}
+const Navbar: React.FC<PropsType> = (props) => {
     return (
         <nav className={s.nav}>
             <ul className={s.nav_list}>
@@ -30,11 +36,11 @@ const Navbar = (props) => {
                 </li>
             </ul>
             {
-                props.users.length ? 
-                   <Friends friends={props.users}/> 
+                props.users.length ?
+                   <Friends friends={props.users}/>
                    : null
             }
-            
+
         </nav>
     )
 }

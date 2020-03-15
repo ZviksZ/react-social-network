@@ -4,9 +4,11 @@ import {maxLengthCreator, required} from "../../../helpers/validators/validators
 import {Textarea}                   from "../../common/FormsControls/FormControls.js";
 import s                            from './../Dialogs.module.css';
 import Button                       from '@material-ui/core/Button';
+import {DialogsPageType} from "../../../redux/redux-store";
 
 
 const maxLength50 = maxLengthCreator(50);
+
 
 const AddMessageForm = (props) => {
    return (
