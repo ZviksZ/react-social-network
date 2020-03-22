@@ -5,15 +5,15 @@ import './App.css';
 import {compose}                                                        from "redux";
 import ErrorPopup                                                       from "./components/common/ErrorPopup/ErrorPopup.jsx";
 import Preloader                                                        from "./components/common/Preloader/Preloader.jsx";
-import HeaderContainer                 from "./components/Header/HeaderContainer.jsx";
-import LoginPage                       from "./components/Login/Login.jsx";
-import NavbarContainer                 from "./components/Navbar/NavbarContainer.jsx";
-import News                            from "./components/News/News";
-import Settings                        from "./components/Settings/Settings";
-import Music                           from "./components/Music/Music";
-import UsersContainer                  from "./components/Users/UsersContainer";
+import HeaderContainer                                                  from "./components/Header/HeaderContainer.jsx";
+import LoginPage                                                        from "./components/Login/Login.tsx";
+import NavbarContainer                                                  from "./components/Navbar/NavbarContainer.jsx";
+import News                                                             from "./components/News/News";
+import Settings                                                         from "./components/Settings/Settings";
+import Music                                                            from "./components/Music/Music";
+import UsersContainer                                                   from "./components/Users/UsersContainer";
 /*import TodosContainer                  from "./components/Todos/TodosContainer";*/
-import {withSuspense}                  from "./hoc/withSuspense.js";
+import {withSuspense}                                                   from "./hoc/withSuspense.js";
 import {initializeApp, setGlobalError} from "./redux/app-reducer.ts";
 import store                           from "./redux/redux-store.ts";
 

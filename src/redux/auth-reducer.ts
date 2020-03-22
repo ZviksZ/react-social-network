@@ -74,7 +74,7 @@ export const getCaptchaUrl = () => async (dispatch: any) => {
     dispatch(getCaptchaUrlSuccess(captchaUrl))
 }
 
-export const loginMe = (email: any, password: any, rememberMe: any, captcha: any) => async (dispatch: any) => {
+export const loginMe = (email: string, password: string, rememberMe: boolean, captcha: string) => async (dispatch: any) => {
     let response = await authAPI.login(email, password, rememberMe, captcha)
 
     if (response.resultCode === ResultCodesEnum.Success) {

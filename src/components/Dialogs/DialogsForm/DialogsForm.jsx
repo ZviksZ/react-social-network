@@ -1,10 +1,10 @@
 import {Field, reduxForm}           from "redux-form";
 import React                        from 'react';
-import {maxLengthCreator, required} from "../../../helpers/validators/validators.js";
-import {Textarea}                   from "../../common/FormsControls/FormControls.js";
+import {maxLengthCreator, required} from "../../../helpers/validators/validators.ts";
+import {Textarea}                   from "../../common/FormsControls/FormControls.tsx";
 import s                            from './../Dialogs.module.css';
 import Button                       from '@material-ui/core/Button';
-import {DialogsPageType} from "../../../redux/redux-store";
+import {DialogsPageType}            from "../../../redux/redux-store";
 
 
 const maxLength50 = maxLengthCreator(50);
